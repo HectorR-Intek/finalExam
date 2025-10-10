@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section>
+      <div id="1" class="note">
+        <input type="checkbox" class="is-complete" checked />
+      </div>
+      <div id="2" class="note"></div>
+      <div id="3" class="note">
+        <input type="checkbox" class="is-complete" checked />
+      </div>
+      <div id="4" class="note"></div>
+      <div id="5" class="note">
+        <input type="checkbox" class="is-complete" checked />
+      </div>
+    </section>
+
+    <script type="module">
+      import { querySelectorAll } from "./dist/querySelector.js";
+
+      const obtained = querySelectorAll(
+        "div.note < input.is-complete[checked]"
+      );
+      console.log(obtained);
+    </script>
+  </body>
+</html>
