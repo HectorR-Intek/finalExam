@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sierpiński Triangle (TypeScript + DIVs)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <div class="card">
+        <div class="row">
+          <strong style="font-size: 1.1rem">
+            Sierpiński Triangle — HTML
+          </strong>
+        </div>
+
+        <div class="row">
+          <label for="depth">Depth:</label>
+          <input id="depth" type="range" min="0" max="9" step="1" value="7" />
+          <span id="depthVal" class="pill">7</span>
+        </div>
+
+        <div class="stage-wrap">
+          <div id="stage" class="stage" aria-label="Sierpinski stage"></div>
+        </div>
+      </div>
+    </main>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>

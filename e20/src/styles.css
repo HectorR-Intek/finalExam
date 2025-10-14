@@ -1,0 +1,82 @@
+:root {
+  --bg: #0b0f14;
+  --ink: #e6e6e6;
+  --accent: #8dd3ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: #0b0f14;
+  color: #e6e6e6;
+  display: grid;
+  place-items: center;
+  font-family: system-ui, sans-serif;
+  padding: 24px;
+}
+
+.app {
+  width: min(92vw, 960px);
+}
+
+.card {
+  background: #0f141b;
+  border: 1px solid #1e2a38;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.row + .row {
+  margin-top: 8px;
+}
+
+label {
+  opacity: 0.9;
+}
+input[type="range"] {
+  width: 260px;
+}
+
+.stage-wrap {
+  margin-top: 14px;
+  border-radius: 14px;
+  border: 1px solid #1e2a38;
+  overflow: hidden;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: calc(2 / 1.7320508075688772);
+  background: radial-gradient(
+      1200px 600px at 50% -50%,
+      #132031,
+      transparent 60%
+    ),
+    #0b0f14;
+}
+
+.tri {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  background: var(--ink);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  box-shadow: 0 0 0 0.5px #0b0f14 inset;
+}
