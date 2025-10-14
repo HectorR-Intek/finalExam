@@ -1,0 +1,13 @@
+{
+  "name": "sierpinski-triangle-ts",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc && copy src\\index.html dist\\ && copy src\\styles.css dist\\",
+    "start": "npx http-server dist -c-1"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.3",
+    "http-server": "^14.1.1"
+  }
+}
