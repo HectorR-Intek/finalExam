@@ -1,7 +1,7 @@
 import { mergeArrays } from "./merger";
 
-const largeArray = [1, , 3, , 5];
-const smallArray = [2, 4];
+const largeArray = [1, 3, 5].concat(new Array(4));
+const smallArray = [2, 4, 6, 7];
 const largeArraySize = largeArray.length;
 const smallArraySize = smallArray.length;
 

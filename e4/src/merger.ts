@@ -15,6 +15,24 @@ export function checkSorted(Arr: number[]) {
   );
 }
 
+function bubbleSort(arr: number[]) {
+  let n = arr.length;
+  let swapped;
+  do {
+    swapped = false;
+    for (let i = 0; i < n - 1; i++) {
+      if (arr[i]! > arr[i + 1]!) {
+        let temp = arr[i];
+        arr[i] = arr[i + 1]!;
+        arr[i + 1] = temp!;
+        swapped = true;
+      }
+    }
+    n--;
+  } while (swapped);
+  return arr;
+}
+
 export function mergeArrays<R>(largeArray: R[], smallArray: R[]) {
   const largeArraySize = largeArray.length;
   const largeArrayEmpties = countEmpties(largeArray);
@@ -28,15 +46,14 @@ export function mergeArrays<R>(largeArray: R[], smallArray: R[]) {
   }
 
   for (let i = 0; i < smallArraySize; i++) {
-    for (let i = 0; i < smallArraySize; i++) {
-      for (let j = 0; j < largeArraySize; j++) {
-        if (!(j in largeArray)) {
-          largeArray[j] = smallArray[i];
-          break;
-        }
+    for (let j = 0; j < largeArraySize; j++) {
+      if (!(j in largeArray)) {
+        largeArray[j] = smallArray[i];
+        break;
       }
     }
   }
+  console.log(largeArray);
 
-  return largeArray.sort();
+  return bubbleSort(largeArray);
 }
