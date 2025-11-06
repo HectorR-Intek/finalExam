@@ -1,19 +1,19 @@
-import { Node, hasLoop } from "./loop";
+import { Node, /*hasLoop*/ detectLoopStart } from "./loop";
 
-describe("hasLoop", () => {
+describe("detectLoopStart", () => {
   test("returns false for an empty list", () => {
-    expect(hasLoop(null)).toBe(false);
+    expect(detectLoopStart(null)).toBe(null);
   });
 
   test("returns false for a single node without loop", () => {
     const head = new Node(1);
-    expect(hasLoop(head)).toBe(false);
+    expect(detectLoopStart(head)).toBe(null);
   });
 
   test("returns true for a single node that loops to itself", () => {
     const head = new Node(1);
     head.next = head;
-    expect(hasLoop(head)).toBe(true);
+    expect(detectLoopStart(head)).toBe(head);
   });
 
   test("returns false for a multi-node list without loop", () => {
@@ -21,7 +21,7 @@ describe("hasLoop", () => {
     head.next = new Node(2);
     head.next.next = new Node(3);
     head.next.next.next = new Node(4);
-    expect(hasLoop(head)).toBe(false);
+    expect(detectLoopStart(head)).toBe(null);
   });
 
   test("returns true when the last node links back to the head", () => {
@@ -29,7 +29,7 @@ describe("hasLoop", () => {
     head.next = new Node(2);
     head.next.next = new Node(3);
     head.next.next.next = head; // loop: 3 → 1
-    expect(hasLoop(head)).toBe(true);
+    expect(detectLoopStart(head)).toBe(head);
   });
 
   test("returns true when the last node links to a middle node", () => {
@@ -38,6 +38,6 @@ describe("hasLoop", () => {
     head.next.next = new Node(3);
     head.next.next.next = new Node(4);
     head.next.next.next.next = head.next; // loop: 4 → 2
-    expect(hasLoop(head)).toBe(true);
+    expect(detectLoopStart(head)).toBe(head.next);
   });
 });
