@@ -45,8 +45,8 @@ export function set(obj: object, path: string, value: any) {
   current[parts[parts.length - 1]] = value;
   return obj;
 }
-
-/*set(testObject, "firstLayer3.secondLayer2.thirdLayer3.fourthLayer2", 42);
+/*
+set(testObject, "firstLayer3.secondLayer2.thirdLayer3.fourthLayer2", 42);
 
 console.log("After:");
 console.log(JSON.stringify(testObject));
@@ -54,7 +54,7 @@ console.log(JSON.stringify(testObject));
 //set(testObject, "firstLayer2.secondLayer3", "Should not work");
 
 set(anotherTestObject, "numero", 76);
-console.log(JSON.stringify(anotherTestObject));*/
+console.log(JSON.stringify(anotherTestObject)); */
 
 const obj = {
   a: {
@@ -62,4 +62,11 @@ const obj = {
   },
 };
 
-set(obj, "a.b.c.d", 42);
+//set(null, "a.b.c.d", 42);
+//console.log(JSON.stringify(obj));
+
+const objTwo = {
+  path: null,
+};
+
+set(objTwo, "", 42);
