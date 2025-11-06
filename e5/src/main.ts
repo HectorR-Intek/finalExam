@@ -12,3 +12,7 @@ console.log(reverseBlocks(arr, blockSize));
 const arrTwo = [0, 1, 2, 3, 4];
 const blockTwo = 2;
 console.log(reverseBlocks(arrTwo, blockTwo));
+
+const arrThree = [0, 1, 2];
+const blockThree = 3;
+console.log(reverseBlocks(arrThree, blockThree));
