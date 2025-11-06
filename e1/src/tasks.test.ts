@@ -19,7 +19,29 @@ test("runTasks executes tasks with sizePool=2", async () => {
   const results = await runTasks(tasks, 2);
 
   expect(results).toHaveLength(3);
-  expect(results[0]).toBe("a");
-  expect(results[1]).toBeInstanceOf(Error);
-  expect(results[2]).toBe("b");
+  expect(results[0]).toEqual({ value: "a" });
+  expect(results[1]).toEqual({ error: "err" });
+  expect(results[2]).toEqual({ value: "b" });
+});
+
+test("no more than n solvers active", async () => {
+  let active = 0;
+  let maxActive = 0;
+
+  const tasks = Array.from({ length: 10 }, (_, i) => {
+    return () =>
+      new Promise<number>((res) => {
+        active++;
+        maxActive = Math.max(maxActive, active);
+        setTimeout(() => {
+          active--;
+          res(i);
+        }, 100);
+      });
+  });
+
+  const sizePool = 2;
+  await runTasks(tasks, sizePool);
+
+  expect(maxActive).toBeLessThanOrEqual(sizePool);
 });

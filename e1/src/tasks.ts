@@ -4,6 +4,8 @@ export type Task<R> = (
   val: string | number
 ) => () => Promise<R>;
 
+export type TaskResult<R> = { value: R } | { error: Error };
+
 export const taskFactorySample: Task<string | number> =
   (delay: number, resolve: boolean, val: string | number) => () =>
     new Promise((res, rej) => setTimeout(resolve ? res : rej, delay, val));
@@ -11,7 +13,7 @@ export const taskFactorySample: Task<string | number> =
 export async function runTasks<R>(
   tasks: (() => Promise<R>)[],
   sizePool: number
-): Promise<(R | Error)[]> {
+): Promise<TaskResult<R>[]> {
   const results: (R | Error)[] = [];
   let index = 0;
 
@@ -20,10 +22,13 @@ export async function runTasks<R>(
       const currentIndex = index++;
       try {
         const result = await tasks[currentIndex]();
-        results[currentIndex] = result;
-      } catch (err) {
-        results[currentIndex] =
-          err instanceof Error ? err : new Error(String(err));
+        //results[currentIndex] = result;
+        results[currentIndex] = { value: result };
+      } catch (error) {
+        results[currentIndex] = {
+          //error instanceof Error ? error : new Error(String(error));
+          error: String(error),
+        };
       }
     }
   }

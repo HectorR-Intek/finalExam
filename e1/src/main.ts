@@ -15,6 +15,7 @@ async function main() {
   const results = await runTasks(tasks, 2);
 
   results.forEach((r) => console.log(r));
+  console.log(results);
 }
 
 main();
