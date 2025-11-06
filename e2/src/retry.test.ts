@@ -1,65 +1,46 @@
 import { queryRetry } from "./retry";
 
-beforeEach(() => {
-  jest.useFakeTimers();
-  jest.spyOn(global, "setTimeout");
-});
-
 afterEach(() => {
   jest.clearAllMocks();
-  jest.useRealTimers();
 });
 
-test("Returns 'Successful fetch' if first try is succesful", async () => {
+test("returns the result immediately if the first call is successful", async () => {
   const urlQuery = jest.fn().mockResolvedValue({ ok: true });
 
-  const resultPromise = queryRetry(urlQuery, 3, 1000, true);
-
-  await jest.runAllTimersAsync();
-  const result = await resultPromise;
+  const result = await queryRetry(urlQuery, 3, 1, true);
 
   expect(urlQuery).toHaveBeenCalledTimes(1);
-  expect(result).toBe("Successful fetch");
+  expect(result).toEqual({ ok: true });
 });
 
-test("Retries once and then is succesful", async () => {
+test("retries once and then succeeds", async () => {
   const urlQuery = jest
     .fn()
     .mockResolvedValueOnce({ ok: false, status: 500 })
     .mockResolvedValueOnce({ ok: true });
 
-  const resultPromise = queryRetry(urlQuery, 3, 1000, true);
-
-  await jest.advanceTimersByTimeAsync(1000);
-
-  const result = await resultPromise;
+  const result = await queryRetry(urlQuery, 3, 1, true);
 
   expect(urlQuery).toHaveBeenCalledTimes(2);
-  expect(result).toBe("Successful fetch");
+  expect(result).toEqual({ ok: true });
 });
 
-test("Returns succesful message after every retry attempt", async () => {
+test("retries up to the maximum and throws after all attempts fail", async () => {
   const urlQuery = jest.fn().mockResolvedValue({ ok: false, status: 500 });
 
-  const resultPromise = queryRetry(urlQuery, 2, 1000, true);
-
-  await jest.advanceTimersByTimeAsync(1000);
-  await jest.advanceTimersByTimeAsync(2000);
-
-  const result = await resultPromise;
-
+  // maxRetry=2 -> 3 intentos
+  await expect(queryRetry(urlQuery, 2, 1, true)).rejects.toThrow(
+    /Fetch failed after 3 attempts/
+  );
   expect(urlQuery).toHaveBeenCalledTimes(3);
-  expect(result).toBe("Fetch failed: Maximum amount of tries has been reached");
 });
 
-test("manages exceptions thrown by urlQuery", async () => {
+test("handles exceptions thrown by urlQuery and retries accordingly", async () => {
   const urlQuery = jest.fn().mockRejectedValue(new Error("Network error"));
 
-  const resultPromise = queryRetry(urlQuery, 1, 1000, false);
-
-  await jest.runAllTimersAsync();
-  const result = await resultPromise;
-
-  expect(urlQuery).toHaveBeenCalledTimes(1);
-  expect(result).toBe("Fetch failed: Maximum amount of tries has been reached");
+  // maxRetry=1 -> 2 intentos (delay fijo por useIncrement=false)
+  await expect(queryRetry(urlQuery, 1, 1, false)).rejects.toThrow(
+    /Fetch failed after 2 attempts/
+  );
+  expect(urlQuery).toHaveBeenCalledTimes(2);
 });

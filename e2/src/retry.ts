@@ -3,34 +3,38 @@ export async function queryRetry<R>(
   maxRetry: number,
   delay: number,
   useIncrement: boolean
-) {
+): Promise<R> {
   function sleep(ms: number) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
-  async function callUrl() {
+  let lastError: unknown;
+
+  for (let attempt = 0; attempt <= maxRetry; attempt++) {
     try {
       const res = await urlQuery();
-      if (!res.ok) {
-        console.log(`Server Error: ${res.status}`);
-        return false;
+
+      if ((res as any)?.ok === false) {
+        const status = (res as any)?.status ?? "unknown";
+        throw new Error(`Server responded with status ${status}`);
       }
-      console.log("Succesful fetch");
-      return true;
+
+      return res;
     } catch (err) {
-      console.log(`Error: ${err}`);
-      return false;
+      lastError = err;
+      if (attempt < maxRetry) {
+        const nextDelay = useIncrement ? delay * (attempt + 1) : delay;
+        console.log(
+          `Attempt ${attempt + 1} failed. Retrying in ${nextDelay / 1000}s...`
+        );
+        await sleep(nextDelay);
+      }
     }
   }
-  let success = await callUrl();
-  for (let i = 0; i <= maxRetry - 1; i++) {
-    if (success) {
-      return "Successful fetch";
-    } else if (useIncrement) {
-      console.log(`Retrying in ${(delay * (i + 1)) / 1000} seconds`);
-      await sleep(delay * (i + 1));
-      success = await callUrl();
-    }
-  }
-  return "Fetch failed: Maximum amount of tries has been reached";
+
+  throw new Error(
+    `Fetch failed after ${maxRetry + 1} attempts. Last error: ${String(
+      lastError
+    )}`
+  );
 }
