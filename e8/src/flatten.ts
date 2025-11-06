@@ -36,9 +36,10 @@ export function flattenFunctional(
     const newKey = parent ? `${parent}_${key}` : key;
 
     if (typeof value === "object" && value !== null && !Array.isArray(value)) {
-      return { ...acc, ...flattenFunctional(value, newKey) };
+      Object.assign(acc, flattenFunctional(value, newKey));
     } else {
-      return { ...acc, [newKey]: value };
+      acc[newKey] = value;
     }
-  }, {});
+    return acc;
+  }, {} as Record<string, PlainValue>);
 }
