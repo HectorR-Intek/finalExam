@@ -4,18 +4,15 @@ export function balanceArray(arr: number[]) {
   if (arr.some((element) => typeof element !== "number"))
     throw new Error("Every element of the input array must be a number");
 
-  let left: Array<number>;
-  let right: Array<number>;
+  let totalSum = 0;
+  for (let j = 0; j < arr.length; j++) {
+    totalSum += arr[j];
+  }
 
-  let leftSum,
-    rightSum = 0;
-
-  for (let i = 1; i <= arr.length; i++) {
-    left = arr.slice(0, i);
-    right = arr.slice(i, arr.length);
-    leftSum = left.reduce((num, acc) => (acc += num), 0);
-    rightSum = right.reduce((num, acc) => (acc += num), 0);
-    if (leftSum === rightSum) return i - 1;
+  let partialSum = 0;
+  for (let i = 0; i < arr.length; i++) {
+    partialSum += arr[i];
+    if (totalSum - partialSum === partialSum) return i;
   }
   return -1;
 }
