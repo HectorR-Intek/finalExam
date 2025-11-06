@@ -16,15 +16,18 @@ export function querySelectorAll(
     throw new SyntaxError("Parent or child selector are missing");
   }
 
-  const children = root.querySelectorAll(childSel);
-  const setParents = new Set<Element>();
+  const parents = root.querySelectorAll(parentSel);
+  const matchedParents: Element[] = [];
 
-  children.forEach((child) => {
-    const p = (child as Element).parentElement;
-    if (p && p.matches(parentSel)) {
-      setParents.add(p);
+  parents.forEach((parent) => {
+    const children = Array.from(parent.children);
+    if (
+      children.length > 0 &&
+      children.every((child) => (child as Element).matches(childSel))
+    ) {
+      matchedParents.push(parent);
     }
   });
 
-  return Array.from(setParents);
+  return matchedParents;
 }
