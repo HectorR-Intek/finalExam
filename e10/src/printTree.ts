@@ -13,34 +13,61 @@ class TreeNode {
 export type TraversalOrder = "pre" | "in" | "post";
 
 function parseTree(str: string): TreeNode | null {
-  if (!str || str === "") return null;
+  if (!str || str.trim() === "") return null;
   str = str.trim();
+
+  let balance = 0;
+  for (const ch of str) {
+    if (ch === "(") balance++;
+    else if (ch === ")") balance--;
+    if (balance < 0)
+      throw new Error(`Invalid structure: extra ')' in "${str}"`);
+  }
+  if (balance !== 0)
+    throw new Error(`Invalid structure: unbalanced parentheses in "${str}"`);
 
   if (!str.startsWith("(")) {
     return new TreeNode(str);
   }
 
-  str = str.slice(1, -1);
+  if (!str.endsWith(")"))
+    throw new Error(`Invalid structure: missing closing ')' in "${str}"`);
+  str = str.slice(1, -1).trim();
 
-  let parts: string[] = [];
-  let balance = 0;
+  const parts: string[] = [];
+  balance = 0;
   let current = "";
 
   for (let ch of str) {
     if (ch === "(") balance++;
     if (ch === ")") balance--;
     if (ch === "," && balance === 0) {
-      parts.push(current);
+      parts.push(current.trim());
       current = "";
     } else {
       if (!(ch === "," && balance === 0)) current += ch;
     }
   }
-  parts.push(current);
+  parts.push(current.trim());
 
-  const node = new TreeNode(parts[0]!);
-  node.left = parts[1] ? parseTree(parts[1]) : null;
-  node.right = parts[2] ? parseTree(parts[2]) : null;
+  if (parts.length === 2) {
+    throw new Error(
+      `Invalid structure: missing explicit root before children in "${str}"`
+    );
+  }
+
+  if (parts.length < 1 || parts.length > 3) {
+    throw new Error(`Invalid structure: expected 1 to 3 parts in "${str}"`);
+  }
+
+  const [value, leftStr = "", rightStr = ""] = parts;
+
+  if (!value)
+    throw new Error(`Invalid structure: missing root value in "${str}"`);
+
+  const node = new TreeNode(value);
+  node.left = leftStr ? parseTree(leftStr) : null;
+  node.right = rightStr ? parseTree(rightStr) : null;
 
   return node;
 }
