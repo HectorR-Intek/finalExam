@@ -2,30 +2,38 @@ export function flattenArray(input: any[]) {
   if (!Array.isArray(input)) throw new Error("Input must be an array");
 
   let result: any[] = [];
+
   for (const el of input) {
     if (Array.isArray(el)) {
-      const temp = flattenArray(el);
-      result = [...result, ...temp];
+      result.push(...flattenArray(el));
     } else {
-      result = [...result, el];
+      result.push(el);
     }
   }
   return result;
 }
 
-export function flattenIterative(input: any[]) {
+export function flattenIterative(input: any[]): any[] {
   if (!Array.isArray(input)) throw new Error("Input must be an array");
-  let result: any[] = [];
-  let stack = [...input];
+
+  const result: any[] = [];
+  const stack: any[] = [{ arr: input, index: 0 }];
 
   while (stack.length > 0) {
-    let temp = stack.pop();
+    const top = stack[stack.length - 1];
 
-    if (Array.isArray(temp)) {
-      stack.push(...temp);
+    if (top.index >= top.arr.length) {
+      stack.pop();
+      continue;
+    }
+
+    const value = top.arr[top.index++];
+    if (Array.isArray(value)) {
+      stack.push({ arr: value, index: 0 });
     } else {
-      result.push(temp);
+      result.push(value);
     }
   }
-  return result.reverse();
+
+  return result;
 }
