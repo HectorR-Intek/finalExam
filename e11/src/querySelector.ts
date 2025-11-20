@@ -4,7 +4,7 @@ export function querySelectorAll(
 ): Element[] {
   const indexComb = selector.indexOf("<");
   if (indexComb === -1) {
-    throw new SyntaxError('Selector must contain combinator "<" (ej: "A < B")');
+    return Array.from(root.querySelectorAll(selector));
   }
   if (selector.indexOf("<", indexComb + 1) !== -1) {
     throw new SyntaxError("Only one combinator < is allowed");

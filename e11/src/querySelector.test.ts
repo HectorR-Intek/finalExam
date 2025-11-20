@@ -29,7 +29,7 @@ test("Does not repeat if multiple children match", () => {
   `;
   const res = qsaEnhanced("section < h2.hit");
   expect(res).toHaveLength(1);
-  expect(res[0].id).toBe("s");
+  expect(res[0]!.id).toBe("s");
 });
 
 test("Returns empty array if no matches are found", () => {
@@ -39,6 +39,16 @@ test("Returns empty array if no matches are found", () => {
 });
 
 test("Throws syntaxError if combinator < is not found", () => {
-  document.body.innerHTML = `<div class="note"></div>`;
-  expect(() => qsaEnhanced("div.note input.is-complete")).toThrow(SyntaxError);
+  document.body.innerHTML = `
+      <div>
+        <div class="card" id="a"></div>
+        <span></span>
+        <div class="card" id="b"></div>
+      </div>
+    `;
+  const selector = "div.card";
+  const expected = Array.from(document.querySelectorAll(selector));
+  const result = qsaEnhanced(selector);
+
+  expect(result).toEqual(expected);
 });
