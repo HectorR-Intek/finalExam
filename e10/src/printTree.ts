@@ -1,4 +1,4 @@
-class TreeNode {
+export class TreeNode {
   value: string;
   left: TreeNode | null;
   right: TreeNode | null;
@@ -32,13 +32,31 @@ function parseTree(str: string): TreeNode | null {
 
   if (!str.endsWith(")"))
     throw new Error(`Invalid structure: missing closing ')' in "${str}"`);
-  str = str.slice(1, -1).trim();
+
+  const inner = str.slice(1, -1).trim();
+
+  let topLevelComma = false;
+  balance = 0;
+  for (const ch of inner) {
+    if (ch === "(") balance++;
+    if (ch === ")") balance--;
+    if (ch === "," && balance === 0) {
+      topLevelComma = true;
+      break;
+    }
+  }
+
+  if (!topLevelComma && inner.startsWith("(") && inner.endsWith(")")) {
+    throw new Error(
+      `Invalid structure: missing explicit root before children in "${str}"`
+    );
+  }
 
   const parts: string[] = [];
   balance = 0;
   let current = "";
 
-  for (let ch of str) {
+  for (let ch of inner) {
     if (ch === "(") balance++;
     if (ch === ")") balance--;
     if (ch === "," && balance === 0) {
@@ -50,7 +68,7 @@ function parseTree(str: string): TreeNode | null {
   }
   parts.push(current.trim());
 
-  if (parts.length === 2) {
+  if (parts.length === 2 && parts[1] !== "") {
     throw new Error(
       `Invalid structure: missing explicit root before children in "${str}"`
     );

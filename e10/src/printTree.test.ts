@@ -24,4 +24,23 @@ describe("printTree", () => {
   it("should return [] for empty input string", () => {
     expect(printTree("", "pre")).toEqual([]);
   });
+
+  it("traverses over binary trees that have a root but no children", () => {
+    expect(printTree("(A)", "pre")).toEqual(["A"]);
+  });
+
+  it("traverses over valid binary trees that have root and only empty children", () => {
+    expect(printTree("(A,)", "in")).toEqual(["A"]);
+    expect(printTree("(A,,)", "post")).toEqual(["A"]);
+  });
+
+  it("throws error if there is no root value in the binary tree", () => {
+    expect(() => printTree("(A,B)", "post")).toThrow(
+      `Invalid structure: missing explicit root before children`
+    );
+  });
+
+  it("throws error if the structure is not properly balanced", () => {
+    expect(() => printTree("((A)", "pre")).toThrow("Invalid structure");
+  });
 });

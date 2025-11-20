@@ -23,8 +23,8 @@ const bTree = "(A,(B,(D),(E)),(C,(F,(H),(I)),(G,,(J))))";
 
 console.log(printTree(bTree, "post"));
 
+const secondValidTree = "((A)";
+console.log(printTree(secondValidTree, "in"));
+
 const firstInvalidTree = "(A, B)";
 console.log(printTree(firstInvalidTree, "pre"));
-
-const secondInvalidTree = "((A)";
-console.log(printTree(secondInvalidTree, "in"));
