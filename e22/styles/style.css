@@ -10,55 +10,60 @@ body {
 
 .fancy-button {
   display: inline-flex;
-  text-transform: uppercase;
-  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
-    "Lucida Sans", Arial, sans-serif;
-  font-weight: bolder;
-  font-size: 1.5rem;
-  border-radius: 25px 25px 25px 25px / 20px 20px 20px 20px;
-  border: #4d4d4d solid;
-  padding: 1em 2.7em;
-  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  text-shadow: -1px 0 rgba(0, 0, 0, 0.12), 1px 0 rgba(0, 0, 0, 0.12);
+
+  padding: 22px 40px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #4a4a4a;
+  cursor: pointer;
+
+  border-radius: 20px;
+
+  border: 3px solid #767676;
+
+  /* “Espacio” gris + borde interior oscuro */
+  box-shadow: inset 0 0 0 8px #cecece, inset 0 0 0 10px #6d6d6d,
+    inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.25);
+
+  /* Degradado del área principal */
+  background: linear-gradient(to bottom, #f7f7f7 0%, #c6c6c6 50%, #b5b4b4 100%);
+
   position: relative;
-  background: rgb(231, 231, 231);
-  color: #454444;
-  overflow: hidden;
-  z-index: 1;
 }
 
 .fancy-button::before {
-  content: "★";
+  content: "";
   position: absolute;
-  inset: 5px;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
   border-radius: inherit;
-  background: linear-gradient(180deg, #eff4fb, #9c9ea5);
-  box-shadow: inset 0 0 0 1px gray;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left: 1.2em;
-  color: rgba(0, 0, 0, 0.4);
-  font-size: 1.1em;
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
   pointer-events: none;
-  z-index: -1;
 }
 
-.fancy-button::after {
-  content: "★";
-  position: absolute;
-  inset: 5px;
-  border-radius: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 1.2em;
-  color: rgba(0, 0, 0, 0.4);
-  font-size: 1.1em;
-  pointer-events: none;
-  z-index: 0;
+.star {
+  color: #7d7d7d;
+  font-size: 28px;
+  font-weight: 700;
+  transform: translateY(-1px);
 }
 
 /* Second sub-exercise */
+
+.form-field {
+  position: relative; /* necesario para posicionar el tooltip */
+  display: inline-flex;
+  flex-flow: row;
+  font-weight: bold;
+  align-items: center;
+}
 
 button {
   display: block;
@@ -90,8 +95,32 @@ input {
   border-style: none none solid none;
 }
 
-.form-field {
-  font-weight: bold;
-  display: inline-flex;
-  flex-flow: row;
+/* Tooltip negro */
+.tooltip {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  position: absolute;
+  top: -42px; /* aparece encima del input */
+  left: 0; /* alineado al inicio del input */
+  background: #000;
+  color: #fff;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
+  display: block; /* visible por defecto como en Expected Render */
+  z-index: 10;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: -6px; /* baja la flecha justo debajo del tooltip */
+  left: 18px; /* posición horizontal; ajusta si quieres */
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #000; /* esta es la flecha negra */
 }
