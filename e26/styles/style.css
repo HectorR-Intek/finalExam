@@ -1,0 +1,274 @@
+/* ---- General container ----*/
+.container {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 5fr 1fr 1fr 4fr 1fr;
+  gap: 5px;
+}
+
+/* ---- Lateral Menu ---- */
+.lateral {
+  background-color: aqua;
+  grid-column: 1;
+  grid-row: 1/5;
+
+  display: flex;
+  flex-flow: column;
+}
+
+#top-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+#top-image img {
+  width: 30%;
+  object-fit: cover;
+}
+
+.lateral-child {
+  flex: 3;
+  background-color: rgb(65, 162, 222);
+  border: solid blue;
+  margin: 1px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.lateral-child:nth-child(2) {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.lateral-grandchild {
+  flex: 1;
+  border: blue;
+  margin: 1px;
+  width: 100%;
+
+  font-size: large;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.lateral-grandchild img {
+  justify-content: flex-start;
+  transform: scale(1.4);
+  margin: 0 3%;
+}
+
+.lateral-title {
+  border-style: none none dotted none;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 1%;
+}
+
+.lateral-paragraph {
+  padding-top: 2%;
+  margin-bottom: 3%;
+}
+
+#cursive {
+  font-family: "Brush script MT";
+}
+
+.lateral-btn {
+  color: rgb(32, 228, 162);
+}
+/* ---- Carousel  ---- */
+
+.carousel {
+  background-color: tomato;
+  grid-column: 2;
+  grid-row: 1;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+/* ----  Horizontal menu ---- */
+
+.menu {
+  background-color: aquamarine;
+  grid-column: 2;
+  grid-row: 2;
+
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-flow: row;
+  align-items: stretch;
+}
+
+.menu-child {
+  flex: 1;
+  background-color: aquamarine;
+  color: rgb(30, 133, 99);
+  border: solid rgb(51, 222, 165);
+  border-width: thin;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-child:hover {
+  background-color: rgb(108, 220, 183);
+}
+
+.menu-title {
+  font-weight: 1000;
+  font-size: larger;
+}
+
+.menu-text {
+  font-size: small;
+}
+
+/* ---- Search Bar ---- */
+.search-bar {
+  background-color: whitesmoke;
+  grid-column: 2;
+  grid-row: 3;
+
+  display: flex;
+  flex-direction: row;
+  border-style: dotted none dotted none;
+  justify-content: space-around;
+  align-items: center;
+
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+}
+
+.bar-container img {
+  width: 4rem;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.bar-container {
+  background-color: cadetblue;
+  height: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: fit-content;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.bar-text {
+  flex: 0 0 auto;
+  font-size: large;
+  font-family: "Brush script MT";
+  line-height: 1.2;
+}
+/* ---- Articles ---- */
+.articles {
+  background-color: azure;
+  grid-column: 2;
+  grid-row: 4;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.article-title {
+  color: rgb(32, 228, 162);
+  margin: 2% 0;
+}
+.article {
+  flex: 1;
+  background-color: white;
+  margin: 1%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.article-body {
+  margin: 1%;
+}
+
+.article-img {
+  width: auto;
+  height: auto;
+  padding: 3%;
+  border: solid lightgrey;
+  border-width: thin;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.article-img img {
+  width: 100%;
+}
+
+/* ---- Footer ---- */
+.footer {
+  background-color: rgb(167, 196, 197);
+  grid-column: 1/3;
+  grid-row: 5;
+  border-style: dotted none none none;
+
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-container {
+  flex: 1;
+  max-height: 100%;
+  min-height: 0;
+}
+
+.footer-container:last-child {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 2%;
+}
+
+.footer-text {
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.footer-container img {
+  height: 2rem;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: grayscale(100%);
+}
+
+a {
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  text-decoration: none;
+  color: rgb(30, 133, 99);
+}
