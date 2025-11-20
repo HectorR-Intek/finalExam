@@ -1,5 +1,9 @@
 import { getPrimes } from "./primes";
 
+/*
+To run this file invoke it (main.js) directly with node from the dist folder.
+*/
+
 function main() {
   const target = process.argv[2];
   const targetNumber = Number(target);
