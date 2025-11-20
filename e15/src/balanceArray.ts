@@ -6,17 +6,18 @@ export function balanceArray(arr: number[]) {
 
   let totalSum = 0;
   for (let j = 0; j < arr.length; j++) {
-    totalSum += arr[j];
+    totalSum += arr[j]!;
   }
 
   let partialSum = 0;
   for (let i = 0; i < arr.length; i++) {
-    partialSum += arr[i];
+    partialSum += arr[i]!;
     if (totalSum - partialSum === partialSum) return i;
   }
   return -1;
 }
 
+/*
 const testArr = [1, 2, 3, 4, 9, 9, 2, 7, 10, 13];
-
 console.log(balanceArray(testArr));
+*/
