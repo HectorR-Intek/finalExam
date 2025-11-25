@@ -3,17 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Front page</title>
-    <link rel="stylesheet" href="./styles/style.css" />
+    <title>Front Page</title>
+    <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
     <div class="container">
-      <!-- Lateral menu -->
-      <div class="lateral">
+      <!-- 
+         LATERAL MENU (desktop only)
+     -->
+      <aside class="lateral">
         <div id="top-image">
-          <img src="public/lateral/logo.jpg" alt="" />
+          <img src="public/lateral/logo.jpg" alt="Logo" />
         </div>
-        <div class="lateral-child">
+
+        <!-- Navigation inside lateral -->
+        <nav class="lateral-child">
           <div class="lateral-grandchild">
             <img src="./public/lateral/local_library.svg" alt="" />
             Tutorial
@@ -24,171 +28,205 @@
           </div>
           <div class="lateral-grandchild">
             <img src="./public/lateral/military_tech.svg" alt="" />
-
-            Top tips
+            Top Tips
           </div>
           <div class="lateral-grandchild">
             <img src="./public/lateral/connect_without_contact.svg" alt="" />
-
             Contact Us
           </div>
           <div class="lateral-grandchild">
-            <img src="./public/lateral/person_pin.svg" alt="" />About
+            <img src="./public/lateral/person_pin.svg" alt="" />
+            About
           </div>
-        </div>
-        <div class="lateral-child">
+        </nav>
+
+        <!-- Latest Tweet -->
+        <section class="lateral-child">
           <div class="lateral-title">Latest Tweet</div>
           <div class="lateral-paragraph" id="cursive">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus
             ante, faucibus vel bibendum et, pulvinar eget augue. Proin ut nibh
             in elit ultrices consectetur sit amet at risus. Vivamus cursus odio
-            et mauris condimentum, quis tempor nulla gravida.
+            et mauris condimentum.
           </div>
-          <div>
-            <button class="lateral-btn">Join the conversation</button>
-          </div>
-        </div>
-        <div class="lateral-child">
-          <div class="lateral-title">Lets be friends!</div>
+          <button class="lateral-btn">
+            <img src="./public/footer/twitter.svg" alt="Twitter icon" />
+            Join the conversation
+          </button>
+        </section>
+
+        <!-- Lets be friends -->
+        <section class="lateral-child">
+          <div class="lateral-title">Let's be friends!</div>
           <div class="lateral-paragraph">
             For weekly finds, community recommendations and more, like us on
             Facebook.
           </div>
-          <div>
-            <button class="lateral-btn">Join the conversation</button>
-          </div>
-        </div>
-      </div>
-      <!--Top Icons-->
-      <div class="top-icons">
-        <div>
-          <img src="./public/lateral/local_library.svg" /><br />Tutorials
-        </div>
-        <div><img src="./public/lateral/amp_stories.svg" /><br />News</div>
-        <div>
-          <img src="./public/lateral/military_tech.svg" /><br />Top Tips
-        </div>
-        <div>
-          <img
-            src="./public/lateral/connect_without_contact.svg"
-          /><br />Contact
-        </div>
-        <div><img src="./public/lateral/person_pin.svg" /><br />About</div>
-      </div>
+          <button class="lateral-btn">
+            <img src="./public/footer/facebook.svg" alt="Facebook icon" />
+            Join the conversation
+          </button>
+        </section>
+      </aside>
 
-      <!-- Carousel -->
-      <div class="carousel">
-        <img src="./public/carousel/feature-story.jpg" alt="" />
-      </div>
-      <!-- Horizontal Menu-->
-      <div class="menu">
-        <div class="menu-child">
-          <div class="menu-title">Tutorials</div>
-          <div class="menu-text">Learn the latest</div>
-        </div>
-        <div class="menu-child">
-          <div class="menu-title">News</div>
-          <div class="menu-text">Know what's happening</div>
-        </div>
-        <div class="menu-child">
-          <div class="menu-title">Top Tips</div>
-          <div class="menu-text">Must know tips</div>
-        </div>
-        <div class="menu-child">
-          <div class="menu-title">Contact us</div>
-          <div class="menu-text">We want to hear from you!</div>
-        </div>
-      </div>
-      <!--Search Bar-->
-      <div class="search-bar">
-        <div class="bar-container">
-          <img src="./public/search/mail_outline.svg" alt="" />
-        </div>
-        <div class="bar-container">
-          <p class="bar-text">
-            Sign up for a newsletter to receive a handpicked selection of best
-            tutorials and news , delivered weekly to your inbox
-          </p>
-        </div>
-        <div class="bar-container">
-          <input type="text" />
-          <button>Subscribe</button>
-        </div>
-      </div>
-      <!--Articles-->
-      <div class="articles">
-        <div class="article">
-          <div class="article-img">
-            <img src="./public/articles/story1.jpg" alt="" />
-          </div>
-          <div class="article-title">
-            Levels upon levels of nesting. How to go deeper.
-          </div>
-          <div class="article-body">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus
-            ante, faucibus vel bibendum et, pulvinar eget augue. Proin ut nibh
-            in elit ultrices consectetur sit amet at risus.
-          </div>
-          <div class="article-footer"></div>
-        </div>
+      <!-- 
+         MAIN CONTENT
+    -->
+      <main class="main-content">
+        <!-- 
+             CAROUSEL
+         -->
+        <section class="carousel">
+          <img src="./public/carousel/feature-story.jpg" alt="Feature Story" />
+        </section>
 
-        <div class="article">
-          <div class="article-img">
-            <img src="./public/articles/story2.jpg" alt="" />
+        <!-- 
+             HORIZONTAL MENU
+         -->
+        <nav class="menu">
+          <div class="menu-child">
+            <div class="menu-title">Tutorials</div>
+            <div class="menu-text">Learn the latest</div>
           </div>
-          <div class="article-title">Deciphering someone else's mess.</div>
-          <div class="article-body">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus
-            ante, faucibus vel bibendum et, pulvinar eget augue. Proin ut nibh
-            in elit ultrices consectetur sit amet at risus.
+          <div class="menu-child">
+            <div class="menu-title">News</div>
+            <div class="menu-text">Know what's happening</div>
           </div>
-          <div class="article-footer"></div>
-        </div>
+          <div class="menu-child">
+            <div class="menu-title">Top Tips</div>
+            <div class="menu-text">Must know tips</div>
+          </div>
+          <div class="menu-child">
+            <div class="menu-title">Contact Us</div>
+            <div class="menu-text">We want to hear from you!</div>
+          </div>
+        </nav>
 
-        <div class="article">
-          <div class="article-img">
-            <img src="./public/articles/story3.jpg" alt="" />
-          </div>
-          <div class="article-title">How we can help you drop jQuery</div>
-          <div class="article-body">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus
-            ante, faucibus vel bibendum et, pulvinar eget augue. Proin ut nibh
-            in elit ultrices consectetur sit amet at risus.
-          </div>
-          <div class="article-footer"></div>
-        </div>
-
-        <div class="article">
-          <div class="article-img">
-            <img src="./public/articles/story4.jpg" alt="" />
-          </div>
-          <div class="article-title">Keep your focus</div>
-          <div class="article-body">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus
-            ante, faucibus vel bibendum et, pulvinar eget augue. Proin ut nibh
-            in elit ultrices consectetur sit amet at risus.
-          </div>
-          <div class="article-footer"></div>
-        </div>
-      </div>
-
-      <!--Footer-->
-      <div class="footer">
-        <div class="footer-container">
-          <div class="footer-text">
-            <a href="">Privacy policy </a> | <a href="">Terms of use </a> |
-            <a href=""> Contact</a>
+        <!-- 
+             NEWSLETTER BAR
+         -->
+        <section class="search-bar">
+          <div class="bar-container">
+            <img src="./public/search/mail_outline.svg" alt="Mail Icon" />
           </div>
 
-          <div class="footer-text">Intekglobal</div>
-          <div class="footer-text">Stock images from <a href="">pexels</a></div>
-        </div>
-        <div class="footer-container">
-          <img src="./public/footer/twitter.svg" alt="" />
-          <img src="./public/footer/facebook.svg" alt="" />
-        </div>
-      </div>
+          <div class="bar-container">
+            <p class="bar-text">
+              Sign up for a newsletter to receive a handpicked selection of best
+              tutorials and news, delivered weekly to your inbox
+            </p>
+          </div>
+
+          <div class="bar-container">
+            <input type="text" placeholder="Email" />
+            <button>Subscribe</button>
+          </div>
+        </section>
+
+        <!-- 
+             ARTICLES
+         -->
+        <section class="articles">
+          <article class="article">
+            <div class="article-img">
+              <img src="./public/articles/story1.jpg" alt="" />
+            </div>
+            <div class="article-title">
+              Levels upon levels of nesting. How to go deeper.
+            </div>
+            <div class="article-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus
+              ante, faucibus vel bibendum et, pulvinar eget augue.Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit. Sed metus ante,
+              faucibus vel bibendum et, pulvinar eget augue. Proin ut nibh in
+              elit ultrices consectetur sit amet at risus. Vivamus cursus odio
+              et mauris condimentum.
+            </div>
+            <div class="article-footer">
+              <span class="article-date">Sep 16, 2020</span> /
+              <a class="article-read" href="#">Read »</a>
+            </div>
+          </article>
+
+          <article class="article">
+            <div class="article-img">
+              <img src="./public/articles/story2.jpg" alt="" />
+            </div>
+            <div class="article-title">Deciphering someone else's mess.</div>
+            <div class="article-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus
+              ante, faucibus vel bibendum et, pulvinar eget augue.Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit. Sed metus ante,
+              faucibus vel bibendum et, pulvinar eget augue. Proin ut nibh in
+              elit ultrices consectetur sit amet at risus. Vivamus cursus odio
+              et mauris condimentum.
+            </div>
+            <div class="article-footer">
+              <span class="article-date">Sep 16, 2020</span> /
+              <a class="article-read" href="#">Read »</a>
+            </div>
+          </article>
+
+          <article class="article">
+            <div class="article-img">
+              <img src="./public/articles/story3.jpg" alt="" />
+            </div>
+            <div class="article-title">How we can help you drop jQuery</div>
+            <div class="article-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus
+              ante, faucibus vel bibendum et, pulvinar eget augue.Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit. Sed metus ante,
+              faucibus vel bibendum et, pulvinar eget augue. Proin ut nibh in
+              elit ultrices consectetur sit amet at risus. Vivamus cursus odio
+              et mauris condimentum.
+            </div>
+            <div class="article-footer">
+              <span class="article-date">Sep 16, 2020</span> /
+              <a class="article-read" href="#">Read »</a>
+            </div>
+          </article>
+
+          <article class="article">
+            <div class="article-img">
+              <img src="./public/articles/story4.jpg" alt="" />
+            </div>
+            <div class="article-title">Keep your focus</div>
+            <div class="article-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus
+              ante, faucibus vel bibendum et, pulvinar eget augue.Lorem ipsum
+              dolor sit amet, consectetur adipiscing elit. Sed metus ante,
+              faucibus vel bibendum et, pulvinar eget augue. Proin ut nibh in
+              elit ultrices consectetur sit amet at risus. Vivamus cursus odio
+              et mauris condimentum.
+            </div>
+            <div class="article-footer">
+              <span class="article-date">Sep 16, 2020</span> /
+              <a class="article-read" href="#">Read »</a>
+            </div>
+          </article>
+        </section>
+
+        <!-- 
+             FOOTER
+        -->
+        <footer class="footer">
+          <div class="footer-container">
+            <div class="footer-text">
+              <a href="">Privacy policy</a> | <a href="">Terms of use</a> |
+              <a href="">Contact</a>
+            </div>
+            <div class="footer-text">Intekglobal</div>
+            <div class="footer-text">
+              Stock images from <a href="">pexels</a>
+            </div>
+          </div>
+
+          <div class="footer-container">
+            <img src="./public/footer/twitter.svg" alt="Twitter" />
+            <img src="./public/footer/facebook.svg" alt="Facebook" />
+          </div>
+        </footer>
+      </main>
     </div>
-    <script></script>
   </body>
 </html>
