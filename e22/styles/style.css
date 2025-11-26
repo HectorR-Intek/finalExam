@@ -9,60 +9,108 @@ body {
 }
 
 .fancy-button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
 
-  text-shadow: -1px 0 rgba(0, 0, 0, 0.12), 1px 0 rgba(0, 0, 0, 0.12);
+  padding: 22px 50px;
+  text-decoration: none;
+  color: #4a4a4a;
 
-  padding: 22px 40px;
   font-size: 22px;
   font-weight: 700;
-  color: #4a4a4a;
-  cursor: pointer;
+  font-family: Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 
-  border-radius: 20px;
+  border-radius: 22px;
 
-  border: 3px solid #767676;
+  border: 2px solid #808080;
 
-  /* “Espacio” gris + borde interior oscuro */
-  box-shadow: inset 0 0 0 8px #cecece, inset 0 0 0 10px #6d6d6d,
+  box-shadow: inset 0 0 0 8px #d9d9d9, inset 0 0 0 10px #565656,
     inset 0 2px 4px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(0, 0, 0, 0.25);
 
-  /* Degradado del área principal */
-  background: linear-gradient(to bottom, #f7f7f7 0%, #c6c6c6 50%, #b5b4b4 100%);
+  background: linear-gradient(
+    to bottom,
+    #e9e9e9 0%,
+    #d2d2d2 40%,
+    #bdbdbd 65%,
+    #979797 100%
+  );
 
-  position: relative;
+  cursor: pointer;
+
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6),
+    -1px 0 rgba(255, 255, 255, 0.2), 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .fancy-button::before {
-  content: "";
+  content: "★";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 45%;
-  border-radius: inherit;
-  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
-  pointer-events: none;
+  left: 22px;
+  font-size: 22px;
+  color: #8b8b8b;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-.star {
-  color: #7d7d7d;
-  font-size: 28px;
-  font-weight: 700;
-  transform: translateY(-1px);
+.fancy-button::after {
+  content: "★";
+  position: absolute;
+  right: 22px;
+  font-size: 22px;
+  color: #8b8b8b;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 /* Second sub-exercise */
 
 .form-field {
-  position: relative; /* necesario para posicionar el tooltip */
+  position: relative;
   display: inline-flex;
   flex-flow: row;
   font-weight: bold;
   align-items: center;
+}
+
+.form-field::before {
+  content: attr(data-hint);
+  position: absolute;
+  top: -42px;
+  left: 0px;
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 100;
+  padding: 6px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
+  z-index: 20;
+}
+
+.form-field::after {
+  content: "";
+  position: absolute;
+  top: calc(-42px + 100% - 1px);
+  left: 20px;
+
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid #000;
+
+  z-index: 19;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid black;
+  padding: 4px 0;
+  font-size: 15px;
+  outline: none;
 }
 
 button {
@@ -78,7 +126,7 @@ button {
 }
 
 label {
-  font-size: medium;
+  font-size: large;
   font-weight: 600;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -93,34 +141,4 @@ input {
   border: black;
   border-width: thin;
   border-style: none none solid none;
-}
-
-/* Tooltip negro */
-.tooltip {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 100;
-  position: absolute;
-  top: -42px; /* aparece encima del input */
-  left: 0; /* alineado al inicio del input */
-  background: #000;
-  color: #fff;
-  font-size: 13px;
-  padding: 6px 10px;
-  border-radius: 4px;
-  white-space: nowrap;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.35);
-  display: block; /* visible por defecto como en Expected Render */
-  z-index: 10;
-}
-
-.tooltip::after {
-  content: "";
-  position: absolute;
-  bottom: -6px; /* baja la flecha justo debajo del tooltip */
-  left: 18px; /* posición horizontal; ajusta si quieres */
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid #000; /* esta es la flecha negra */
 }
