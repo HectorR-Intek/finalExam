@@ -6,17 +6,6 @@ export function reverseBlocks<T extends {}>(arr: T[], blockSize: number) {
     throw new Error("blockSize has to be greater than zero");
   }
 
-  if (arr.length == blockSize) {
-    let temp;
-    let last = arr.length - 1;
-    for (let i = 0; i < arr.length; i++) {
-      temp = arr[i] as T;
-      arr[i] = arr[last] as T;
-      arr[last] = temp;
-      last--;
-    }
-  }
-
   let blocks = 0;
 
   while (arr.length - blocks * blockSize >= blockSize) {
