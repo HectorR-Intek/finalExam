@@ -4,51 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Front Page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baskervville:ital@1&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
     <div class="container">
-      <!--Mobile-->
-      <nav class="mobile-grandchilds">
-        <div class="mobile-logo">
-          <img src="public/lateral/logo.jpg" alt="Logo" />
-        </div>
-
-        <div class="mobile-item">
-          <img src="./public/lateral/local_library.svg" alt="" />
-          Tutorial
-        </div>
-        <div class="mobile-item">
-          <img src="./public/lateral/amp_stories.svg" alt="" />
-          News
-        </div>
-        <div class="mobile-item">
-          <img src="./public/lateral/military_tech.svg" alt="" />
-          Top Tips
-        </div>
-        <div class="mobile-item">
-          <img src="./public/lateral/connect_without_contact.svg" alt="" />
-          Contact Us
-        </div>
-        <div class="mobile-item">
-          <img src="./public/lateral/person_pin.svg" alt="" />
-          About
-        </div>
-      </nav>
-
       <!-- 
          LATERAL MENU (desktop only)
      -->
       <aside class="lateral">
         <div id="top-image">
           <img src="public/lateral/logo.jpg" alt="Logo" />
+          <span class="top-text">Blank Page Coding</span>
         </div>
 
         <!-- Navigation inside lateral -->
         <nav class="lateral-child">
           <div class="lateral-grandchild">
             <img src="./public/lateral/local_library.svg" alt="" />
-            Tutorial
+            Tutorials
           </div>
           <div class="lateral-grandchild">
             <img src="./public/lateral/amp_stories.svg" alt="" />
@@ -100,6 +83,33 @@
          MAIN CONTENT
     -->
       <main class="main-content">
+        <nav class="mobile-grandchilds">
+          <div class="mobile-logo" id="mobile-logo">
+            <img src="public/lateral/logo.jpg" alt="Logo" />
+            <span class="top-text">Blank Page Coding</span>
+          </div>
+
+          <div class="mobile-item">
+            <img src="./public/lateral/local_library.svg" alt="" />
+            Tutorials
+          </div>
+          <div class="mobile-item">
+            <img src="./public/lateral/amp_stories.svg" alt="" />
+            News
+          </div>
+          <div class="mobile-item">
+            <img src="./public/lateral/military_tech.svg" alt="" />
+            Top Tips
+          </div>
+          <div class="mobile-item">
+            <img src="./public/lateral/connect_without_contact.svg" alt="" />
+            Contact Us
+          </div>
+          <div class="mobile-item">
+            <img src="./public/lateral/person_pin.svg" alt="" />
+            About
+          </div>
+        </nav>
         <!-- 
              CAROUSEL
          -->
@@ -134,17 +144,17 @@
          -->
         <section class="search-bar">
           <div class="bar-container">
-            <img src="./public/search/mail_outline.svg" alt="Mail Icon" />
-          </div>
+            <img src="./public/search/mail_outline.svg" alt="Mail Icon" /><br />
+            <!--</div>
 
-          <div class="bar-container">
+          <div class="bar-container" id="bartext">-->
             <p class="bar-text">
               Sign up for a newsletter to receive a handpicked selection of best
               tutorials and news, delivered weekly to your inbox
             </p>
           </div>
 
-          <div class="bar-container">
+          <div class="bar-container" id="subscribe">
             <input type="text" placeholder="Email" />
             <button>Subscribe</button>
           </div>
@@ -166,8 +176,7 @@
               ante, faucibus vel bibendum et, pulvinar eget augue.Lorem ipsum
               dolor sit amet, consectetur adipiscing elit. Sed metus ante,
               faucibus vel bibendum et, pulvinar eget augue. Proin ut nibh in
-              elit ultrices consectetur sit amet at risus. Vivamus cursus odio
-              et mauris condimentum.
+              elit ultrices consectetur sit amet at risus.
             </div>
             <div class="article-footer">
               <span class="article-date">Sep 16, 2020</span> /
@@ -185,11 +194,10 @@
               ante, faucibus vel bibendum et, pulvinar eget augue.Lorem ipsum
               dolor sit amet, consectetur adipiscing elit. Sed metus ante,
               faucibus vel bibendum et, pulvinar eget augue. Proin ut nibh in
-              elit ultrices consectetur sit amet at risus. Vivamus cursus odio
-              et mauris condimentum.
+              elit ultrices consectetur sit amet at risus.
             </div>
             <div class="article-footer">
-              <span class="article-date">Sep 16, 2020</span> /
+              <span class="article-date">Sep 10, 2020</span> /
               <a class="article-read" href="#">Read »</a>
             </div>
           </article>
@@ -204,11 +212,10 @@
               ante, faucibus vel bibendum et, pulvinar eget augue.Lorem ipsum
               dolor sit amet, consectetur adipiscing elit. Sed metus ante,
               faucibus vel bibendum et, pulvinar eget augue. Proin ut nibh in
-              elit ultrices consectetur sit amet at risus. Vivamus cursus odio
-              et mauris condimentum.
+              elit ultrices consectetur sit amet at risus.
             </div>
             <div class="article-footer">
-              <span class="article-date">Sep 16, 2020</span> /
+              <span class="article-date">Sep 9, 2020</span> /
               <a class="article-read" href="#">Read »</a>
             </div>
           </article>
@@ -223,11 +230,10 @@
               ante, faucibus vel bibendum et, pulvinar eget augue.Lorem ipsum
               dolor sit amet, consectetur adipiscing elit. Sed metus ante,
               faucibus vel bibendum et, pulvinar eget augue. Proin ut nibh in
-              elit ultrices consectetur sit amet at risus. Vivamus cursus odio
-              et mauris condimentum.
+              elit ultrices consectetur sit amet at risus.
             </div>
             <div class="article-footer">
-              <span class="article-date">Sep 16, 2020</span> /
+              <span class="article-date">Sep 3, 2020</span> /
               <a class="article-read" href="#">Read »</a>
             </div>
           </article>
@@ -245,7 +251,7 @@
           <a href="">Privacy policy</a> | <a href="">Terms of use</a> |
           <a href="">Contact</a>
         </div>
-        <div class="footer-text">Intekglobal</div>
+        <div class="footer-text">© Intekglobal</div>
         <div class="footer-text">Stock images from <a href="">pexels</a></div>
       </div>
 
