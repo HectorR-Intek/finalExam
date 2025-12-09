@@ -165,12 +165,12 @@ body {
 }
 
 .carousel::after {
-  content: "Read, Learn, Share";
+  content: "   Read, Learn, Share";
   position: absolute;
-  left: 30px;
+  left: 0px; /*formerly 30px*/
   bottom: 55px;
   background: rgba(255, 255, 255, 0.95);
-  padding: 8px 16px;
+  padding: 8px 26px;
   font-size: 1.6rem;
   font-weight: bold;
 }
@@ -178,12 +178,13 @@ body {
 .carousel::before {
   content: "Get daily how-tos, stories & updates with the latest news.";
   position: absolute;
-  left: 30px;
+  left: 0px; /*formerly 30px*/
   bottom: 25px;
   background: rgba(0, 0, 0, 0.75);
   color: white;
-  padding: 6px 14px;
-  font-size: 0.95rem;
+  padding: 6px 18px;
+  font-size: 1.2rem;
+  font-family: "Brush Script MT";
 }
 
 /* -----------------------------------------------------
@@ -240,15 +241,15 @@ body {
 }
 
 .bar-container img {
-  padding-right: 1%;
-  width: 7%;
+  padding-right: 4%;
+  width: 12%;
 }
 
 .bar-text {
   font-family: "Brush Script MT", serif;
   font-style: italic;
   font-weight: 500;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.2rem;
   /**/
 }
@@ -432,6 +433,12 @@ body {
     height: 340px;
   }
 
+  .menu-child {
+    min-height: fit-content;
+    margin-bottom: 2px;
+    padding: 10px 0px;
+  }
+
   .menu-text {
     display: none;
   }
@@ -463,12 +470,38 @@ body {
   .mobile-item img {
     width: 20px;
   }
+
+  .bar-container:last-child input {
+    width: 90%;
+  }
+
+  .bar-container img {
+    min-width: 17%;
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  .bar-container:last-child {
+    min-width: 45%;
+  }
+
+  .bar-text {
+    font-size: 1.4rem;
+    padding-right: 3%;
+    padding-left: 3%;
+  }
 }
 
 /* SMALL MOBILE: 480px */
 @media (max-width: 768px) {
   .bar-text {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+  }
+
+  .bar-container img {
+    width: 20%;
+    padding-right: 5%;
+    padding-left: 2%;
   }
 
   .carousel::after {
@@ -478,6 +511,7 @@ body {
   .mobile-grandchilds {
     flex-direction: row;
     align-items: center;
+    border-bottom: none;
   }
 
   .mobile-item img {
@@ -506,13 +540,15 @@ body {
 
   #mobile-logo {
     width: 100%;
+    order: 1;
+    border-top: 2px dotted #333;
   }
 
   .menu {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     min-height: fit-content;
-    margin-bottom: 2px;
+    margin-bottom: 8px;
     padding: 8px 0px;
 
     position: sticky;
@@ -544,17 +580,39 @@ body {
   }
 
   .bar-container:last-child {
+    width: 100%;
     justify-self: center;
   }
 
   .bar-container:last-child input {
     border-right: none;
     flex: 2 2 auto;
-    min-width: 90%;
+    /*min-width: 90%;*/
   }
 
   .bar-container:last-child button {
     border-left: none;
     flex: 1 1 auto;
+  }
+
+  .bar-container img {
+    max-width: 10%;
+    padding-right: 4%;
+    padding-left: 4%;
+  }
+
+  .bar-text {
+    font-size: 1.2rem;
+  }
+
+  .carousel::before {
+    bottom: 0px;
+    width: 100%;
+  }
+
+  .carousel::after {
+    bottom: 30px;
+    width: 60%;
+    opacity: 0.85;
   }
 }
